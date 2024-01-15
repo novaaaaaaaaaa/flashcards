@@ -35,14 +35,16 @@
     </head>
     <body>
         <h1>Revise with flashcards</h1>
+
         
         <main><!-- Container for flashcards -->
-            <div class="flashcard" onclick="flipCard(this)"> <!-- Flashcard with front and back sides -->
+            <label for="flash">Click on flashcard to view answer</figcaption>
+                <div class="flashcard" id="flash" onclick="flipCard(this)"> <!-- Flashcard with front and back sides -->
                 <div class="side" id="front"><img src="elephant.jpg" alt="Picture of an elephant" height="200px;"></div>
                 <div class="side" id="back" style="display: none;"><div>elephant</div>
                 A large mammal with a long trunk and big ears</div>
             </div>
-            
+
     </main>
         <script>
             // JS would ideally be in an external stylesheet!
