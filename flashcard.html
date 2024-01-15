@@ -5,6 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Flashcards</title>
         <style>
+            :root {
+                --shadow-color: 0deg 0% 60%;
+                --shadow-elevation-low:
+                    0px 1px 1.1px hsl(var(--shadow-color) / 0.34),
+                    0px 1.7px 1.9px -1.2px hsl(var(--shadow-color) / 0.34),
+                    -0.1px 4px 4.5px -2.5px hsl(var(--shadow-color) / 0.34);
+                --shadow-elevation-medium:
+                    0px 1px 1.1px hsl(var(--shadow-color) / 0.36),
+                    -0.1px 3.3px 3.7px -0.8px hsl(var(--shadow-color) / 0.36),
+                    -0.2px 8.2px 9.2px -1.7px hsl(var(--shadow-color) / 0.36),
+                    -0.4px 20px 22.5px -2.5px hsl(var(--shadow-color) / 0.36);
+                --shadow-elevation-high:
+                    0px 1px 1.1px hsl(var(--shadow-color) / 0.34),
+                    -0.1px 5.8px 6.5px -0.4px hsl(var(--shadow-color) / 0.34),
+                    -0.2px 10.9px 12.3px -0.7px hsl(var(--shadow-color) / 0.34),
+                    -0.4px 17.9px 20.1px -1.1px hsl(var(--shadow-color) / 0.34),
+                    -0.6px 28.6px 32.2px -1.4px hsl(var(--shadow-color) / 0.34),
+                    -1px 44.7px 50.3px -1.8px hsl(var(--shadow-color) / 0.34),
+                    -1.5px 67.9px 76.4px -2.1px hsl(var(--shadow-color) / 0.34),
+                    -2.2px 100px 112.5px -2.5px hsl(var(--shadow-color) / 0.34);
+                --step-0: clamp(1rem, 0.6957rem + 1.5217vw, 1.875rem);
+                --step-1: clamp(1.2rem, 0.8022rem + 1.9891vw, 2.3438rem);
+                --step-2: clamp(1.44rem, 0.9217rem + 2.5913vw, 2.93rem);
+                --step-3: clamp(1.7281rem, 1.0555rem + 3.363vw, 3.6619rem);
+                --step-4: clamp(2.0738rem, 1.2029rem + 4.3543vw, 4.5775rem);
+                --step-5: clamp(2.4881rem, 1.3633rem + 5.6239vw, 5.7219rem);
+                }
+
             main {
                 font-family: Arial, sans-serif;
                 background-color: #f4f4f4;
@@ -16,11 +44,11 @@
             }
 
             .flashcard {
-                width: 300px;
-                height: 200px;
+                width: 600px;
+                height: 400px;
                 background-color: #fff;
                 border: 1px solid #ddd;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                box-shadow: var(--shadow-elevation-medium);
                 padding: 20px;
                 text-align: center;
                 cursor: pointer;
@@ -31,17 +59,71 @@
             .flashcard:hover {
                 transform: scale(1.05);
             }
+
+            @media (min-width: 1401px) {
+                .title {
+                    font-size: var(--step-2);
+                }
+                .flashcard {
+                    font-size: var(--step-1);
+                }
+            }
+
+            @media (max-width: 1400px) {
+                .title {
+                    font-size: var(--step-2);
+                }
+                .flashcard {
+                    font-size: var(--step-2);
+                }
+            }
+
+            @media (max-width: 1200px) {
+                .title {
+                    font-size: var(--step-3);
+                }
+                .flashcard {
+                    font-size: var(--step-3);
+                }
+            }
+
+            @media (max-width: 1000px) {
+                .title {
+                    font-size: var(--step-4);
+                }
+                .flashcard {
+                    font-size: var(--step-4);
+                }
+            }
+
+            @media (max-width: 800px) {
+                .title {
+                    font-size: var(--step-5);
+                }
+                .flashcard {
+                    font-size: var(--step-4);
+                }
+            }
+
+            @media (max-width: 600px) {
+                .flashcard {
+                    font-size: var(--step-4);
+                    height: 200px;
+                    width: 300px;
+                }
+                #front img {
+                    height: 200px;
+                }
+            }
         </style>
     </head>
     <body>
-        <h1>Revise with flashcards</h1>
-
+        <h1 class="title">Revise with flashcards</h1>
         
         <main><!-- Container for flashcards -->
-            <label for="flash">Click on flashcard to view answer</figcaption>
-                <div class="flashcard" id="flash" onclick="flipCard(this)"> <!-- Flashcard with front and back sides -->
-                <div class="side" id="front"><img src="elephant.jpg" alt="Picture of an elephant" height="200px;"></div>
-                <div class="side" id="back" style="display: none;"><div>elephant</div>
+            <div class="flashcard" onclick="flipCard(this)"> <!-- Flashcard with front and back sides -->
+                <div class="side" id="front"><img src="elephant.jpg" alt="Picture of an elephant" height="370px;"></div>
+                <div class="side" id="back" style="display: none;"><div>Elephant:</div>
                 A large mammal with a long trunk and big ears</div>
             </div>
 
